@@ -15,7 +15,6 @@ events.html    Weekly services and prayer
 assets/css/styles.css
 assets/js/main.js   image fallbacks, daily verse, newsletter form
 assets/brand/       photos + logo (see README inside for filenames)
-assets/imports/     love-gift artwork
 assets/events/      Events page photos
 ```
 
