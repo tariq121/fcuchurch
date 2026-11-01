@@ -20,7 +20,8 @@
   // web-app URL into VERSE_ENDPOINT. While it is blank, slow, or returns an
   // error, the built-in KJV verses below are shown instead, so this section
   // always has something to display.
-  var VERSE_ENDPOINT = "";
+  var VERSE_ENDPOINT =
+    "https://script.google.com/macros/s/AKfycbyS6q4jfyRltKtlIN7i7AS0wb9zXMiq_HQ1HoItxYc9GUjg-XgW6rKWoyTbZQu1MaKY/exec";
   var CHURCH_TZ = "America/Chicago";
 
   // Built-in backup verses (King James Version, public domain): [reference, text]
