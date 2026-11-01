@@ -695,3 +695,14 @@ img.missing { visibility: hidden; }
 .mission .video-frame { box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6); }
 .video-caption.on-dark { color: var(--white); }
 @media (min-width: 640px) { .mission h2 { font-size: 3.75rem; } }
+
+/* Daily verse: smooth reveal while the sheet answers, and the optional note */
+.daily-bread blockquote { transition: opacity 0.25s; }
+.daily-bread.is-loading blockquote { opacity: 0; }
+.daily-bread .verse-note {
+  margin-top: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: var(--muted);
+}

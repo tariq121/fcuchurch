@@ -16,6 +16,7 @@ assets/css/styles.css
 assets/js/main.js   image fallbacks, daily verse, newsletter form
 assets/brand/       photos + logo (see README inside for filenames)
 assets/events/      Events page photos
+google-apps-script/  Daily-verse Google Sheet script + setup guide
 ```
 
 ## Preview locally
@@ -41,6 +42,12 @@ The footer form posts each email to a Google Apps Script web app that adds it to
 Google Sheet (the same one used on forgivenchurchunusual.com). The URL is `NEWSLETTER_ENDPOINT`
 at the top of the newsletter section in `assets/js/main.js`; change it there if the script is ever
 redeployed with a new address.
+
+## Daily verse
+
+The homepage verse is chosen in a Google Sheet (a verse or a topic for each day of the week, with a
+translation dropdown). See `google-apps-script/README.md` for setup. Until `VERSE_ENDPOINT` in
+`assets/js/main.js` is set, the site shows its built-in KJV verses.
 
 ## Editing
 
