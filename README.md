@@ -37,9 +37,10 @@ and `about.html` at `/about`, so no `.html` appears in the address bar.
 
 ## Newsletter signups
 
-The footer form has no backend by default — it opens an email to members@forgivenchurchunusual.com.
-To collect signups automatically, create a form at a service like Formspree and set
-`data-endpoint="https://formspree.io/f/XXXX"` on the `<form class="newsletter-form">` in each page.
+The footer form posts each email to a Google Apps Script web app that adds it to the church's
+Google Sheet (the same one used on forgivenchurchunusual.com). The URL is `NEWSLETTER_ENDPOINT`
+at the top of the newsletter section in `assets/js/main.js`; change it there if the script is ever
+redeployed with a new address.
 
 ## Editing
 

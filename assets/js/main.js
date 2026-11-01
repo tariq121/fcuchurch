@@ -56,38 +56,40 @@
   }
 
   // ---------- Newsletter signup ----------
-  // Set data-endpoint on the form (e.g. a Formspree / Mailchimp / Google Apps
-  // Script URL) to collect signups. Without one, it falls back to an email.
+  // Subscribers are added to the church's Google Sheet through a Google Apps
+  // Script web app (same one used on forgivenchurchunusual.com). It expects a
+  // JSON body of { "email": "..." }. Google doesn't return a readable response
+  // to browsers, so "no-cors" is used and a completed request counts as success.
+  var NEWSLETTER_ENDPOINT =
+    "https://script.google.com/macros/s/AKfycbzOGsxUL1wV7p5kU_-I9SEvqERQh0fTfNgcWaPNeTaLhf5iclxlh4L9BNsEh_698LG0/exec";
+
   document.querySelectorAll("form.newsletter-form").forEach(function (form) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       var status = form.querySelector(".status");
-      var email = form.querySelector("input[type=email]").value.trim();
-      var endpoint = form.getAttribute("data-endpoint");
+      var input = form.querySelector("input[type=email]");
+      var button = form.querySelector("button[type=submit]");
+      var email = input.value.trim();
       if (!email) return;
 
-      if (!endpoint) {
-        window.location.href =
-          "mailto:members@forgivenchurchunusual.com?subject=" +
-          encodeURIComponent("Newsletter signup") +
-          "&body=" + encodeURIComponent("Please add " + email + " to the weekly church newsletter.");
-        if (status) status.textContent = "Thanks! Your email app should open to finish signing up.";
-        return;
-      }
-
+      button.disabled = true;
       if (status) status.textContent = "Signing you up…";
-      fetch(endpoint, {
+
+      fetch(form.getAttribute("data-endpoint") || NEWSLETTER_ENDPOINT, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form)
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ email: email })
       })
-        .then(function (res) {
-          if (!res.ok) throw new Error("Request failed");
+        .then(function () {
           form.reset();
-          if (status) status.textContent = "Thank you! You're on the list.";
+          if (status) status.textContent = "Thank you! You’ve been added to our newsletter list.";
         })
         .catch(function () {
-          if (status) status.textContent = "Something went wrong. Please email members@forgivenchurchunusual.com.";
+          if (status) status.textContent = "Something went wrong. Please try again or email members@forgivenchurchunusual.com.";
+        })
+        .finally(function () {
+          button.disabled = false;
         });
     });
   });
