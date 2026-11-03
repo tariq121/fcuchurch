@@ -355,7 +355,7 @@ svg { flex-shrink: 0; }
   .daily-bread .container { grid-template-columns: 0.8fr 1.2fr; gap: 5rem; align-items: start; }
 }
 
-/* ---------- Prayer card ---------- */
+/* ---------- Cards (used on Events) ---------- */
 
 .card {
   background: var(--white);
@@ -363,31 +363,6 @@ svg { flex-shrink: 0; }
   padding: 1.5rem;
 }
 @media (min-width: 640px) { .card { padding: 2rem; } }
-
-.prayer-times { display: grid; gap: 1.5rem; }
-.prayer-times .label {
-  color: var(--orange);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.prayer-times .time { margin-top: 0.75rem; font-family: var(--font-display); font-size: 1.875rem; color: var(--ink); }
-.prayer-note {
-  margin-top: 1.75rem;
-  border-left: 2px solid var(--orange);
-  padding-left: 1rem;
-  color: var(--purple);
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-@media (min-width: 640px) {
-  .prayer-times { grid-template-columns: 1fr 1fr; gap: 0; }
-  .prayer-times > div:first-child { padding-right: 2rem; border-right: 1px solid var(--line); }
-  .prayer-times > div:last-child { padding-left: 2rem; }
-}
 
 /* ---------- Pastors ---------- */
 
@@ -637,10 +612,7 @@ img.missing { visibility: hidden; }
 /* Logo is purple/orange on transparent — render it white on the dark footer */
 .site-footer .logo img { filter: brightness(0) invert(1); }
 
-/* Zoom prayer links */
-.prayer-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.75rem; }
-.prayer-foot .prayer-note { margin-top: 0; }
-.zoom-btn { padding: 0.75rem 1.25rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; gap: 0.5rem; }
+/* Text links */
 .text-link { color: var(--purple); font-weight: 700; text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: 3px; transition: color 0.15s; }
 .text-link:hover { color: var(--orange); }
 
@@ -706,3 +678,52 @@ img.missing { visibility: hidden; }
   line-height: 1.75rem;
   color: var(--muted);
 }
+
+/* Homepage weekly prayer: big, bold, each fact stated once */
+.prayer h2 { margin-top: 1.25rem; font-size: 3.75rem; line-height: 0.92; color: var(--white); }
+.prayer-card { border-left: 4px solid var(--orange); padding-left: 1.5rem; }
+.prayer-time {
+  font-family: var(--font-display);
+  font-size: 5.5rem;
+  line-height: 0.85;
+  color: var(--orange);
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums;
+}
+.prayer-time span {
+  display: block;
+  margin-top: 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+.prayer-days { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+.prayer-days li {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--white);
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+@media (min-width: 640px) {
+  .prayer h2 { font-size: 6rem; }
+  .prayer-card { padding-left: 2.5rem; }
+  .prayer-time { font-size: 9rem; }
+  .prayer-days li { font-size: 1rem; padding: 0.875rem 2rem; }
+}
+
+/* Praying-hands icon: Noto Emoji (one-colour, OFL) so it can be tinted orange */
+.prayer-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+.prayer-icon {
+  display: block;
+  font-family: "Noto Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--orange);
+}
+@media (min-width: 640px) { .prayer-icon { font-size: 7.5rem; } }
